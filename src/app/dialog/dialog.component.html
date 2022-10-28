@@ -1,0 +1,57 @@
+
+<h1>Mat Dailog in Form</h1>
+<div>
+<Form [formGroup]="productForm">
+    <div >
+        <mat-form-field appearance="outline">
+          <mat-label>Outline form field</mat-label>
+          <input formControlName="productName" matInput placeholder="Placeholder">
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Product Category</mat-label>
+            <mat-select placeholder="Product Category" formControlName="category">
+                <mat-option value="Fruits">Fruits</mat-option>
+                <mat-option value="Vegitable">Vegitable</mat-option>
+                <mat-option value="Electronic">Electronic</mat-option>
+            </mat-select>
+            
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Start date" formControlName="date">
+              <input matEndDate placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+    
+          <mat-label>Product Freshnes</mat-label>
+        <mat-radio-group>
+          <mat-radio-button *ngFor="let fresh of freshnesslist" value="[fresh]">
+            {{fresh}}
+          </mat-radio-button>
+        </mat-radio-group>
+    
+         <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput placeholder="Price" formControlName="price">
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Comment</mat-label>
+            <textarea matInput placeholder="Comment" formControlName="comment"></textarea>
+        </mat-form-field>
+        <div mat-dialog-action [align]="'end'">
+          <button mat-raised-button-color="warn" mat-dialog-close>Exit</button>
+          <button style="margin-left:8px;" mat-raised-button color="primary" (click)="addProduct()">Save</button>
+        </div>
+        
+    </div>
+</Form>
+
+</div>
+
